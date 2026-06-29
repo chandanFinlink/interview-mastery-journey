@@ -22,7 +22,7 @@ const printUserProfile = (user: User) => {
   console.log(user);
 };
 
-printUserProfile(currentUser);
+// printUserProfile(currentUser);
 
 const userList: User[] = [
   { id: 1, name: "Alice", email: "alice@test.com" },
@@ -64,4 +64,13 @@ const getCompletedProjects = (projects: Project[]): Project[] => {
 
 // Test your function out!
 const completedList = getCompletedProjects(projectDashboard);
-console.log("Completed Projects:", completedList);
+// console.log("Completed Projects:", completedList);
+
+const wrapWithTimestamp = <T>(input: T) => {
+  return { timeStamp: Date.now(),
+    content :input
+   };
+};
+
+console.log(wrapWithTimestamp(787898));
+
