@@ -44,9 +44,16 @@ const getCompletedProjects = (projects) => {
 const completedList = getCompletedProjects(projectDashboard);
 // console.log("Completed Projects:", completedList);
 const wrapWithTimestamp = (input) => {
-    return { timeStamp: Date.now(),
-        content: input
-    };
+    return { timeStamp: Date.now(), content: input };
 };
-console.log(wrapWithTimestamp(787898));
+const handlePaymentResponse = (response) => {
+    if ("transactionId" in response) {
+        return `Payment of ${response.amount} succeeded with ID ${response.transactionId}`;
+    }
+    else {
+        return `Payment failed: ${response.reason} (Error Code: ${response.errorCode})`;
+    }
+};
+console.log(handlePaymentResponse({ transactionId: "abc123", amount: 100 }));
+console.log(handlePaymentResponse({ reason: "Insufficient funds", errorCode: 402 }));
 //# sourceMappingURL=index.js.map
